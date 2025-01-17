@@ -11,5 +11,39 @@ git GUI -
 2. add all -> git add --all or git add .
     particular file -> git add filename 
 
-3.
+3.  commit -> git commit -m "msg"
 
+4. git clone RepoURL or downloadZib  => npm i or npm install -> creates node_modules folder  
+
+vite.cofig.js - vite tool configuration file 
+
+README.md -> markdown file 
+
+===================================================
+JSON  - javascript object notation 
+
+paytm -----> payment (ICICI BANK )
+paytm ---> movie ticket
+paytm ----> bus booking 
+paytm ---> flight booking  (indigo)
+
+API 
+
+A standard format to store and transmit data from one app to other  or client to server.
+JSON and XML (extensible markup language)
+
+XML -> 
+<Passenger>
+    <name>Ram</name>
+    <fare>100</fare>
+</Passenger>
+
+JSON - 
+obj = {fname:"Ram",lname:"sharma",age:20}
+
+
+json string = {"fname":"Ram","lname":"sharma","age":20}
+
+
+======================================
+package.json -> store info of our project and its dependencies 

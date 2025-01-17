@@ -44,6 +44,7 @@ function Fun(){
 <Fun></Fun>
 
 <div></div>
+.js or .jsx 
 
 All html tags will be small letters 
 All component will be in pascal case (first letter capital)
