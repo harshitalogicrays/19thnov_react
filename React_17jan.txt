@@ -1,0 +1,15 @@
+version control  - git software 
+
+Github - GitHub is a proprietary developer platform that allows developers to create, store, manage, and share their code. It uses Git to provide distributed version control and GitHub itself provides access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project.
+
+git - Git is a distributed version control system that tracks versions of files. It is often used to control source code by programmers who are developing software collaboratively.
+git bash - cmd 
+git GUI - 
+
+1. git init - creates a .git folder at the location (local repo)
+
+2. add all -> git add --all or git add .
+    particular file -> git add filename 
+
+3.
+

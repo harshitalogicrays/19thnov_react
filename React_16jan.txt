@@ -1,0 +1,73 @@
+ReactJS - 
+What is reactjs  - frontend javascript library 
+Why - for Building UI (frontend)
+
+library - jQuery,  reactjs , vue
+framework - nextjs , angular, nuxt , laravel, springboot , expressjs etc. 
+
+library -  collection of functions
+control is in user hand 
+ex-  your house 
+flexibility
+
+framework -  collection of libraries
+control is in framework hand  
+ex- office 
+
+nodejs install 
+node -v 
+npm -v (node package manager  -  javascript library - millions of packages )
+
+features - 
+1. SPA (single page application) -  in whole application there will be only one html page . 
+index.html 
+div -> id root
+
+2. component based architecture 
+    any class or function is known as component
+    component -  basic Building block of code 
+                reusable code 
+                return JSX 
+JSX -  javascript extensible / javascript and html /javascript and XML
+
+    class Abc{}
+    function Abc{}
+
+    function fun(){
+        return "hello"
+    }
+    document.getElementById("root").innerHTML  = fun()
+
+function Fun(){
+    return <h1>Hello</h1> =>  JSX 
+}
+<Fun></Fun>
+
+<div></div>
+
+All html tags will be small letters 
+All component will be in pascal case (first letter capital)
+
+3. virtual DOM  - (React fiber)
+Copy of real DOM 
+
+Browser creates DOM tree 
+React creates a copy of Real DOM known as virtual DOM
+
+changes are done in virtual DOM then compare virtual DOM with Real DOM
+and patch the change. 
+diffing algorithm 
+Reconciliation
+
+===========================================================================
+react19 
+till react18  => npx create-react-app react-basics 
+vite tool  - next generation frontend tool - javascript, react, vue...etc..
+
+project structure 
+component -  function, class 
+
+git and github 
+
+github ->create account 
+git download -> install 
