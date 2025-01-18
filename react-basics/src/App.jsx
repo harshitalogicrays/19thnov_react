@@ -3,7 +3,8 @@ import Firstfuncomp from "./components/functionalcomp/Firstfuncomp"
 function App() { //functional component
   //return JSX
   return (
-    <div> <h1>Hello react</h1>
+    <div className="container"> 
+      <h1 className="text-danger">Hello react</h1>
       <Firstfuncomp/>
       <h2>Welcome to LRA</h2>
       <Firstfuncomp></Firstfuncomp>
