@@ -47,3 +47,23 @@ json string = {"fname":"Ram","lname":"sharma","age":20}
 
 ======================================
 package.json -> store info of our project and its dependencies 
+
+=======================================================================
+
+create our own components -
+1. functional 
+2. class 
+
+functional component -> 
+props 
+events 
+
+
+
+
+
+
+
+
+
+
