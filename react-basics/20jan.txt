@@ -1,0 +1,56 @@
+functional component -
+
+props - properties 
+
+
+<div id="" class="" style="" name=""></div> => html attributes
+
+<img src="" border="" width="" height="" alt="">
+
+
+<Mycomp username="Ram"></Mycomp>
+username is a property(props) of Mycomp 
+
+
+JSX comment -
+ {/*  */}
+ JSX - all javascript  related things should be enclosed in {} 
+
+ conditional rendering - 
+
+ 1. {condition ? JSX / string : JSX / string  }
+
+ 2. {condition(true) && JSX/string }
+
+3.  {condition(false) || jsx/string }
+
+==========================================
+Fragment component -  container / wrapper
+1. 
+<React.Fragment></React.Fragment>
+
+2.
+import {Fragment} from 'react'
+<Fragment></Fragment>
+
+3. <></> -> shorthand of Fragment
+
+//////////////////////////////////
+children props  - 
+
+<div id="" classNAme="" style="">
+    <h1></h1>
+    <p></p>
+</div>
+
+<PropsDemo username="" mobile={}>
+    <h1></h1>
+    <FirstComp></FirstComp>
+</PropsDemo>
+
+/////////////////
+events - onClick , onBlur etc. 
+
+Img include 
+/////////////////////////////////
+state variable 
