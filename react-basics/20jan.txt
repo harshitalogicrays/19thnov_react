@@ -24,6 +24,8 @@ JSX comment -
 
 3.  {condition(false) || jsx/string }
 
+&& - shortcircuit operator 
+
 ==========================================
 Fragment component -  container / wrapper
 1. 

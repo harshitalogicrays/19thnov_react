@@ -1,0 +1,31 @@
+children props  - 
+
+<div id="" classNAme="" style="">
+    <h1></h1>
+    <p></p>
+</div>
+
+<PropsDemo username="" mobile={}>
+    <h1></h1>
+    <FirstComp></FirstComp>
+</PropsDemo>
+
+prop are read only 
+
+////////////////////////////
+events - onClick , onBlur etc. 
+/////////////////////////////////
+state variable  - 
+class comp - 
+state 
+
+functional comp - 
+useState() - hook (function)
+
+
+////////////
+Img include 
+
+//////////////////
+27th jan  - state 
+css 
