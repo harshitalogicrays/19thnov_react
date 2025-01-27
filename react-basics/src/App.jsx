@@ -1,16 +1,21 @@
 import Firstclasscomp from './components/classcomp/firstclasscomp'
 import Addition from './components/functionalcomp/Addition'
 import Childrenpropsdemo from './components/functionalcomp/Childrenpropsdemo'
+import CssDemo from './components/functionalcomp/CssDemo'
 import Eventsdemoinfun from './components/functionalcomp/Eventsdemoinfun'
 import Firstfuncomp from "./components/functionalcomp/Firstfuncomp"
 import Propsdemoinfun from './components/functionalcomp/Propsdemoinfun'
 import StateDemo from './components/functionalcomp/StateDemo'
+import './App.css'
+import cssm from './App.module.css'
+import Form1 from './components/functionalcomp/Form1'
 function App() { //functional component
   //return JSX
   let c = 1
   return (
     <div className="container"> 
-      <h1 className="text-danger">Hello react</h1>
+      {/* <h1 className='Aligntext'>Hello react</h1>
+      <h2 className={cssm.error}>css module demo</h2> */}
       {/* <Firstfuncomp/>
       <h2>Welcome to LRA</h2>
       <Firstfuncomp></Firstfuncomp>
@@ -34,9 +39,12 @@ function App() { //functional component
 
           {/* <Eventsdemoinfun/> */}
 
-            <StateDemo count={c}/>
+            {/* <StateDemo count={c}/>
             <hr/>
-            <Addition/>
+            <Addition/> */}
+
+            {/* <CssDemo/> */}
+            <Form1/>
     </div>
   )
 }

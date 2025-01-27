@@ -1,0 +1,28 @@
+state  - 
+
+1. inline css - 
+<h1 style="color:purple;background-color:gray">
+
+<h1 style={{color:"purple" , backgroundColor:"gray" , fontSize:"20px" }}
+
+2. css variable -
+let styles = {color:"purple" , backgroundColor:"gray" , fontSize:"20px" }
+<h1 style={styles}></h1>
+<p style={styles}></h1>
+
+3. css file  -
+mycss.css 
+import "cssfilepath"
+
+All the children of the component (where we have imported CSS file) can access that CSS without importing it 
+
+4. css module file - mycss.module.css 
+import aliasname from 'path'
+
+<h1 className={aliasname.className}></h1>
+5. bootstrap 
+6. react-bootstrap
+
+===============================================================================
+Form Validations - 
+React Bootstrap 
