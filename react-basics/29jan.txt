@@ -1,0 +1,20 @@
+Form Validations - 
+React Bootstrap  -  css component 
+Bootstrap depenencies 
+
+<form>
+<input class="form-control"/>
+
+<Form.Control/>
+<Card>
+<Image 
+Button 
+Navbar
+
+Container 
+Row 
+<Col></Col>  => <div class="col"></div>
+
+npm i react-bootstrap 
+==================
+react-hook-form 

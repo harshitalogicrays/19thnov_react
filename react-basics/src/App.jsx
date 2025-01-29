@@ -9,6 +9,9 @@ import StateDemo from './components/functionalcomp/StateDemo'
 import './App.css'
 import cssm from './App.module.css'
 import Form1 from './components/functionalcomp/Form1'
+import FormValidations from './components/functionalcomp/FormValidations'
+import ReactBootstrapForm from './components/functionalcomp/ReactBootstrapForm'
+import ReactHookFormDemo from './components/functionalcomp/ReactHookFormDemo'
 function App() { //functional component
   //return JSX
   let c = 1
@@ -44,7 +47,11 @@ function App() { //functional component
             <Addition/> */}
 
             {/* <CssDemo/> */}
-            <Form1/>
+            {/* <Form1/> */}
+
+            {/* <FormValidations/> */}
+            {/* <ReactBootstrapForm/> */}
+            <ReactHookFormDemo/>
     </div>
   )
 }
