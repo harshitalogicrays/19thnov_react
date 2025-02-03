@@ -12,11 +12,13 @@ import Form1 from './components/functionalcomp/Form1'
 import FormValidations from './components/functionalcomp/FormValidations'
 import ReactBootstrapForm from './components/functionalcomp/ReactBootstrapForm'
 import ReactHookFormDemo from './components/functionalcomp/ReactHookFormDemo'
+import Header from './components/functionalcomp/Header'
+import { Outlet } from 'react-router'
 function App() { //functional component
   //return JSX
   let c = 1
   return (
-    <div className="container"> 
+    <> 
       {/* <h1 className='Aligntext'>Hello react</h1>
       <h2 className={cssm.error}>css module demo</h2> */}
       {/* <Firstfuncomp/>
@@ -51,8 +53,11 @@ function App() { //functional component
 
             {/* <FormValidations/> */}
             {/* <ReactBootstrapForm/> */}
-            <ReactHookFormDemo/>
-    </div>
+            {/* <ReactHookFormDemo/> */}
+
+            <Header/>
+            <Outlet/>
+    </>
   )
 }
 
