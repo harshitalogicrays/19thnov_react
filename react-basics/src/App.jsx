@@ -55,7 +55,6 @@ function App() { //functional component
             {/* <ReactBootstrapForm/> */}
             {/* <ReactHookFormDemo/> */}
 
-            <Header/>
             <Outlet/>
     </>
   )

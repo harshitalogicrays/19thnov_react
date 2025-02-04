@@ -1,0 +1,10 @@
+Routing -
+NavLink 
+Error Page 
+array.map()
+
+Array of Object 
+Routing 
+
+
+lifting the state up 
