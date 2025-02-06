@@ -1,0 +1,19 @@
+Hooks - 
+useState 
+useEffect 
+useCallback 
+useMemo 
+useRef 
+useTransition 
+useImperativeHandle 
+useContext 
+use 
+
+custom hook 
+==================================
+form - 
+1. controlled component  - react mangaes it  (using state and onchange)
+2. uncontrolled component - DOM mangaes it (ref)
+
+===============================================
+captcha generate 

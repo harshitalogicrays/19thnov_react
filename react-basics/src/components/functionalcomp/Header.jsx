@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {Container,Nav,Navbar,NavDropdown} from 'react-bootstrap';
 import { BsCart4 } from "react-icons/bs";
 import { NavLink, Outlet } from 'react-router';
@@ -10,9 +10,21 @@ const Header = () => {
     fontWeight: isActive ? "bold" :"",
     transition : "all .5s ease"
   })
+  let funlinks = [
+    {text:"First Fun Comp" , url:"/fun/first"},
+    {text:"props demo" , url:"/fun/props"},
+    {text:"event demo" , url:"/fun/event"},
+    {text:"useState" , url:"/fun/state"},
+    {text:"list rendering" , url:"/fun/list"},
+    {text:"form design" , url:"/fun/form"},
+    {text:"validations" , url:"/fun/form/validations"},
+    {text:"react hook form" , url:"/fun/form/rhf"},
+    {text:"Lifting the stateup" , url:"/fun/stateup"},
+    {text:"Hooks Demo" , url:"/fun/hooks"},
+
+  ]
   return (
-    <>    
-    <Navbar expand="lg" bg="dark" data-bs-theme="dark">
+    <>   <Navbar expand="lg" bg="dark" data-bs-theme="dark">
       <Container fluid>
         <Navbar.Brand href="#home">react practice</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,13 +35,13 @@ const Header = () => {
              <Nav.Link as={NavLink} to='/products'  style={navlinkstyles}>Products</Nav.Link>
              <Nav.Link as={NavLink} to='/contact'  style={navlinkstyles}>Contact</Nav.Link>
              <NavDropdown title="Functional Components" id="basic-nav-dropdown1">
-                <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-                <NavDropdown.Divider /> 
-                <NavDropdown.Item href="#action/3.2">My Cart</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.3">My Orders</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Logout </NavDropdown.Item>
+                {funlinks.map((link,index)=><Fragment key={index}>
+                  <NavDropdown.Item  style={navlinkstyles} as={NavLink} to={link.url} end>
+                     {link.text}
+                  </NavDropdown.Item>
+                  {funlinks.length-1 !=index &&  <NavDropdown.Divider /> }  
+                </Fragment>)}
+               
             </NavDropdown>
             <Nav.Link as={NavLink} to='/products'>Class Components</Nav.Link>
 

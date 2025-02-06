@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const StateDemo = (props) => {
+const StateDemo = ({count=1}) => {
     // props.count = 3 //Cannot assign to read only property 'count' of object
 
     /* let c = props.count  //1
@@ -9,7 +9,7 @@ const StateDemo = (props) => {
          console.log(c)
      } */
 
-    let [c, setC] = React.useState(props.count)
+    let [c, setC] = React.useState(count)
     let [num1] = useState(1)
     let [isActive,setIsActive] =useState(true)
     let [products,setProducts]=useState([])
