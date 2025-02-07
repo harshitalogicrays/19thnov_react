@@ -19,6 +19,7 @@ import FormValidations from './functionalcomp/FormValidations'
 import ReactHookFormDemo from './functionalcomp/ReactHookFormDemo'
 import Liftingthestateup from './functionalcomp/Liftingthestateup'
 import HooksDemo from './functionalcomp/HooksDemo'
+import UseCallbackDemo from './functionalcomp/UseCallbackDemo'
 const Routing = () => {
   return (
     <Routes>
@@ -40,7 +41,7 @@ const Routing = () => {
               <Route path='fun/hooks' element={<HooksDemo/>}>
                   <Route index element={<StateDemo/>}/>
                   <Route path='useeffect' element={<HooksDemo/>}/>
-                  <Route path='usecallback' element={<HooksDemo/>}/>
+                  <Route path='usecallback' element={<UseCallbackDemo/>}/>
                   <Route path='useref' element={<HooksDemo/>}/>
                   <Route path='usememo' element={<HooksDemo/>}/>
                   <Route path='usetransition' element={<HooksDemo/>}/>

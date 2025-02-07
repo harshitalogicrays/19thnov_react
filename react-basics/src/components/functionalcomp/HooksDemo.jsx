@@ -1,6 +1,6 @@
 import React from 'react'
-import { Col, Row ,Nav, NavLink, Container} from 'react-bootstrap'
-import { Outlet } from 'react-router'
+import { Col, Row ,Nav,  Container} from 'react-bootstrap'
+import { NavLink, Outlet } from 'react-router'
 const HooksDemo = () => {
     const navlinkstyles =({isActive})=>({
         color:isActive ? "red" : "",
@@ -23,8 +23,8 @@ const HooksDemo = () => {
     <Row>
       <Col xs={3}>
         <Nav className="flex-column">
-            {links.map((link ,index)=> <Nav.Link key={index} as={NavLink} 
-            to={link.url} end>{link.text}</Nav.Link>)}   
+            {links.map((link ,index)=><Nav.Link key={index} 
+            as={NavLink} style={navlinkstyles} to={link.url} end>{link.text}</Nav.Link>)}   
     </Nav>
       </Col>
       <Col>

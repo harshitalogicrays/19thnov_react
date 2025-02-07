@@ -1,6 +1,6 @@
 Hooks - 
 useState 
-useEffect 
+useEffect - load , state change , unload 
 useCallback 
 useMemo 
 useRef 
@@ -16,4 +16,8 @@ form -
 2. uncontrolled component - DOM mangaes it (ref)
 
 ===============================================
-captcha generate 
+captcha generate
+
+React.useEffect(()=>{},[])
+
+React.useEffect(()=>{},[length])

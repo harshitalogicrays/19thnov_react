@@ -1,0 +1,23 @@
+captcha generate
+
+React.useEffect(()=>{},[])
+
+React.useEffect(()=>{},[length])
+
+ROM , RAM - primary memory 
+HDD/SSD - secondary memory 
+
+secondary ----------------> RAM -> execute 
+
+
+secondary -------cache memory---------> RAM -> execute 
+optimization - to increase the performance  
+
+useCallback hook - react18
+
+useCallback is a React Hook that lets you cache a function definition between re-renders.
+
+ let generaterndom =  useCallback(()=>{},[])
+
+ useRef 
+ useEffect unload 
