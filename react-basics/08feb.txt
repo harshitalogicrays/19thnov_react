@@ -1,0 +1,25 @@
+useCallback hook - react18
+
+useCallback is a React Hook that lets you cache a function definition between re-renders.
+
+ let generaterndom =  useCallback(()=>{},[])
+
+ uncontrolled component - 
+ function comp -  useRef()
+ class comp - createRef()
+
+ ref -  hold the reference of the element
+
+ref return current property 
+document.getElementById("txt") => selectRef.current 
+
+useEffect(()=>{ //comp load 
+ 
+    return ()=>{ } //comp unload
+},[])
+
+Monday - 
+pass ref - parent to child 
+          forwardRef 
+
+useMemo

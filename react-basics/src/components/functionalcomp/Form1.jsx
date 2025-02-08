@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Form1 = () => {
-    let [user,setUser] = useState({username:'ram',email:'',password:'',cpassword:''})
+    let [user,setUser] = useState({username:'',email:'',password:'',cpassword:''})
+    let focusRef = useRef()
     let handleChange=(e)=>{
         // setUser({...user ,[e.target.name]:e.target.value}) 
         setUser((prevState)=>({...prevState ,[e.target.name]:e.target.value }))
@@ -10,6 +11,11 @@ const Form1 = () => {
         e.preventDefault()
         alert(JSON.stringify(user))
     }
+
+    useEffect(()=>{
+        focusRef.current.focus()
+        focusRef.current.className="form-control bg-danger"
+    },[])
       return (
     <div className='container mt-5 col-8'>
         <h1 className='Aligntext'>Form using Bootstrap</h1><hr/>
@@ -17,7 +23,7 @@ const Form1 = () => {
         <div className="row">
             <div className="mb-3 col">
                 <label htmlFor="username" className="form-label">Username</label>
-                <input type="text" className="form-control" name="username"
+                <input type="text" className="form-control" name="username" ref={focusRef}
                 value={user.username} onChange={handleChange}/>
             </div>
             <div className="mb-3 col">

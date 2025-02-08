@@ -20,6 +20,8 @@ import ReactHookFormDemo from './functionalcomp/ReactHookFormDemo'
 import Liftingthestateup from './functionalcomp/Liftingthestateup'
 import HooksDemo from './functionalcomp/HooksDemo'
 import UseCallbackDemo from './functionalcomp/UseCallbackDemo'
+import UseEffectDemo from './functionalcomp/UseEffectDemo'
+import UseRefDemo from './functionalcomp/UseRefDemo'
 const Routing = () => {
   return (
     <Routes>
@@ -40,9 +42,9 @@ const Routing = () => {
               <Route path='fun/stateup' element={<Liftingthestateup/>}/> 
               <Route path='fun/hooks' element={<HooksDemo/>}>
                   <Route index element={<StateDemo/>}/>
-                  <Route path='useeffect' element={<HooksDemo/>}/>
+                  <Route path='useeffect' element={<UseEffectDemo/>}/>
                   <Route path='usecallback' element={<UseCallbackDemo/>}/>
-                  <Route path='useref' element={<HooksDemo/>}/>
+                  <Route path='useref' element={<UseRefDemo/>}/>
                   <Route path='usememo' element={<HooksDemo/>}/>
                   <Route path='usetransition' element={<HooksDemo/>}/>
                   <Route path='useimperativehandle' element={<HooksDemo/>}/>
