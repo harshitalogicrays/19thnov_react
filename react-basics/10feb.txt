@@ -1,0 +1,14 @@
+pass ref - parent to child 
+          forwardRef 
+
+
+parent to child => state pass - as an props 
+                   set state fun - as an props 
+
+child to parent -> functions  => useImperativeHandle Hook  - with ref (forwardRef)
+
+=================================
+
+useMemo
+useTransition 
+context 
