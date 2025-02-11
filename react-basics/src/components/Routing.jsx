@@ -23,6 +23,8 @@ import UseCallbackDemo from './functionalcomp/UseCallbackDemo'
 import UseEffectDemo from './functionalcomp/UseEffectDemo'
 import UseRefDemo from './functionalcomp/UseRefDemo'
 import UseIHParent from './functionalcomp/UseIHParent'
+import UseMemoDemo from './functionalcomp/UseMemoDemo'
+import USeTransitionDemo from './functionalcomp/USeTransition'
 const Routing = () => {
   return (
     <Routes>
@@ -46,8 +48,8 @@ const Routing = () => {
                   <Route path='useeffect' element={<UseEffectDemo/>}/>
                   <Route path='usecallback' element={<UseCallbackDemo/>}/>
                   <Route path='useref' element={<UseRefDemo/>}/>
-                  <Route path='usememo' element={<HooksDemo/>}/>
-                  <Route path='usetransition' element={<HooksDemo/>}/>
+                  <Route path='usememo' element={<UseMemoDemo/>}/>
+                  <Route path='usetransition' element={<USeTransitionDemo/>}/>
                   <Route path='useimperativehandle' element={<UseIHParent/>}/>
                   <Route path='usecontext' element={<HooksDemo/>}/>
                   <Route path='customhook' element={<HooksDemo/>}/>

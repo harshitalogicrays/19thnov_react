@@ -1,0 +1,12 @@
+useCallback - fun definition cache
+useMemo - expensive calcualtion cache hold 
+useTransition 
+context 
+
+useCallback is a React Hook that lets you cache a function definition between re-renders.
+useMemo is a React Hook that lets you cache the result of a calculation between re-renders.
+
+useContext hook - 
+
+context  - 
+custom hook
