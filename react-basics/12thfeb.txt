@@ -1,0 +1,12 @@
+useContext hook - 
+
+context  - 
+context consume  in functional comp =
+ useContext hook 
+ use hook (react 19)
+
+class comp =  <con1.Consumer>
+              </con1.Consumer>
+
+custom hook
+class component - props , event, state 

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.js"
 import { BrowserRouter} from 'react-router'
 import Routing from './components/Routing'
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>

@@ -14,6 +14,7 @@ import ReactBootstrapForm from './components/functionalcomp/ReactBootstrapForm'
 import ReactHookFormDemo from './components/functionalcomp/ReactHookFormDemo'
 import Header from './components/functionalcomp/Header'
 import { Outlet } from 'react-router'
+import ThemeContext from './components/functionalcomp/ThemeContext'
 function App() { //functional component
   //return JSX
   let c = 1
@@ -55,7 +56,9 @@ function App() { //functional component
             {/* <ReactBootstrapForm/> */}
             {/* <ReactHookFormDemo/> */}
 
+            <ThemeContext>
             <Outlet/>
+            </ThemeContext>
     </>
   )
 }

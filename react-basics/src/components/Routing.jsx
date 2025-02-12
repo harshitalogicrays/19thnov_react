@@ -25,11 +25,14 @@ import UseRefDemo from './functionalcomp/UseRefDemo'
 import UseIHParent from './functionalcomp/UseIHParent'
 import UseMemoDemo from './functionalcomp/UseMemoDemo'
 import USeTransitionDemo from './functionalcomp/USeTransition'
+import UseContextDemo from './functionalcomp/UseContextDemo'
+import CustomHookDemo from './functionalcomp/CustomHookDemo'
+import MyFirstContextComp from './functionalcomp/MyFirstContextComp'
 const Routing = () => {
   return (
     <Routes>
       <Route path='/' element={<App/>}>
-          <Route element={<Header/>}>
+          <Route element={<MyFirstContextComp><Header/></MyFirstContextComp>}>
               <Route index element={<Home/>}/>
               <Route path='about' element={<About/> }/>
               <Route path='products' element={<Products/>}/>
@@ -51,8 +54,8 @@ const Routing = () => {
                   <Route path='usememo' element={<UseMemoDemo/>}/>
                   <Route path='usetransition' element={<USeTransitionDemo/>}/>
                   <Route path='useimperativehandle' element={<UseIHParent/>}/>
-                  <Route path='usecontext' element={<HooksDemo/>}/>
-                  <Route path='customhook' element={<HooksDemo/>}/>
+                  <Route path='usecontext' element={<UseContextDemo/>}/>
+                  <Route path='customhook' element={<CustomHookDemo/>}/>
 
               </Route>
           </Route>

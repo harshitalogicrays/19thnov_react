@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import {Container,Nav,Navbar,NavDropdown} from 'react-bootstrap';
 import { BsCart4 } from "react-icons/bs";
 import { NavLink, Outlet } from 'react-router';
+import ThemeBtn from './ThemeBtn';
 const Header = () => {
   const navlinkstyles = ({isActive})=>({
     color:isActive ? "red" : "",
@@ -46,6 +47,9 @@ const Header = () => {
             <Nav.Link as={NavLink} to='/products'>Class Components</Nav.Link>
 
           </Nav>
+
+          <ThemeBtn/>
+          
           <Nav className="me-5">
           <Nav.Link as={NavLink} to='/register'  style={navlinkstyles}>Register</Nav.Link>
           <Nav.Link as={NavLink} to='/login'  style={navlinkstyles}>Login</Nav.Link>
