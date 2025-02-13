@@ -44,7 +44,7 @@ const Header = () => {
                 </Fragment>)}
                
             </NavDropdown>
-            <Nav.Link as={NavLink} to='/products'>Class Components</Nav.Link>
+            <Nav.Link as={NavLink} to='/class'>Class Components</Nav.Link>
 
           </Nav>
 

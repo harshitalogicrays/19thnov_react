@@ -1,0 +1,12 @@
+
+custom hook - js function (return array , object, variable etc.)
+hook means nothing but a resuable function 
+never return jsx (coz if return jsx then it is a component)
+
+
+
+class component - props , event, state 
+this keyword 
+
+props.username => this.props.username
+uname => this.state.uname 

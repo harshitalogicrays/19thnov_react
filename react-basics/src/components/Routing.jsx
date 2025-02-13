@@ -28,6 +28,14 @@ import USeTransitionDemo from './functionalcomp/USeTransition'
 import UseContextDemo from './functionalcomp/UseContextDemo'
 import CustomHookDemo from './functionalcomp/CustomHookDemo'
 import MyFirstContextComp from './functionalcomp/MyFirstContextComp'
+import ClassLayout from './classcomp/classLayout'
+import Firstclasscomp from './classcomp/firstclasscomp'
+import Propsinclass from './classcomp/Propsinclass'
+import Eventandstate from './classcomp/Eventandstate'
+import Forminclass from './classcomp/Forminclass'
+import LifeCyclemethods from './classcomp/LifeCyclemethods'
+import Purecompdemo from './classcomp/Purecompdemo'
+import Refinclass from './classcomp/Refinclass'
 const Routing = () => {
   return (
     <Routes>
@@ -61,6 +69,18 @@ const Routing = () => {
           </Route>
           <Route path='login' element={<Login/>}/>
           <Route path='register' element={<Register/>}/>
+          
+          <Route path='class' element={<ClassLayout/>}>
+              <Route index element={<Firstclasscomp/>}/>
+              <Route path='props' element={<Propsinclass/>}/>
+              <Route path='eventstate' element={<Eventandstate/>}/>
+              <Route path='form/validations' element={<Forminclass/>}/>
+              <Route path='lifecycle' element={<LifeCyclemethods/>}/>
+              <Route path='pure' element={<Purecompdemo/>}/>
+              <Route path='ref' element={<Refinclass/>}/>
+
+          </Route>
+
       </Route>    
 
       <Route path="*" element={<PageNotFound/>}/>     
