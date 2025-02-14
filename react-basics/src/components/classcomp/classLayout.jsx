@@ -9,6 +9,7 @@ export default class ClassLayout extends Component {
         {text:"First class Comp" , url:"/class"},
         {text:"props demo" , url:"/class/props"},
         {text:"event and state demo" , url:"/class/eventstate"},
+        {text:"form" , url:"/class/form"},
         {text:"validations" , url:"/class/form/validations"},
         {text:"ref" , url:"/class/ref"},
         {text:"life cycle" , url:"/class/lifecycle"},

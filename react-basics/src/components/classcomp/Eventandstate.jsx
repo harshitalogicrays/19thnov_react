@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Eventandstate extends Component {
     constructor(props){
         super(props)
-        this.state = {count:0}
+        this.state = {count:0 , isActive:true , products:[]}
     }
      handleClick = () => { 
         let a = 1
@@ -11,6 +11,13 @@ export default class Eventandstate extends Component {
         alert(`button clicked ${a+b}`)   
     }
      handleClick1=(a,b)=>{  alert(a+b) }
+     increase = ()=>{
+        this.setState({ count : this.state.count + 1 })
+     }
+     decrease = ()=>{
+        // this.setState({ count : this.state.count - 1 })
+        this.setState(prevState => ({count: prevState.count-1}) )
+     }
   render() {
     return (
      <>
@@ -26,6 +33,13 @@ export default class Eventandstate extends Component {
         </>
             <>
                 <h1>Counter using state in class</h1>
+                <button type="button" className='btn btn-primary me-2' onClick={this.increase}>Increase</button>
+            <button type="button" className='btn btn-primary me-2' onClick={this.decrease}>
+                Decrease</button>
+            <button type="button" className='btn btn-primary me-2' onClick={()=>this.setState({count:0})}>
+                Reset</button>
+            <button type="button" className='btn btn-primary me-2' onClick={()=>this.setState({count:-this.state.count})}>
+                Change Sign</button>
                 <h1>{this.state.count}</h1>
             </>
      </>

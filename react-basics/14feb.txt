@@ -1,0 +1,11 @@
+Person 
+Employee extends Person{
+    constructor(){
+        super()
+    }
+}
+
+react class component - life cycle methods 
+pure component
+error boundary 
+

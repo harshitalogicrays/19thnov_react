@@ -36,6 +36,7 @@ import Forminclass from './classcomp/Forminclass'
 import LifeCyclemethods from './classcomp/LifeCyclemethods'
 import Purecompdemo from './classcomp/Purecompdemo'
 import Refinclass from './classcomp/Refinclass'
+import FormValidationsinClass from './classcomp/FormValidationsinclass'
 const Routing = () => {
   return (
     <Routes>
@@ -74,7 +75,8 @@ const Routing = () => {
               <Route index element={<Firstclasscomp/>}/>
               <Route path='props' element={<Propsinclass/>}/>
               <Route path='eventstate' element={<Eventandstate/>}/>
-              <Route path='form/validations' element={<Forminclass/>}/>
+              <Route path='form' element={<Forminclass/>}/>
+              <Route path='form/validations' element={<FormValidationsinClass/>}/>
               <Route path='lifecycle' element={<LifeCyclemethods/>}/>
               <Route path='pure' element={<Purecompdemo/>}/>
               <Route path='ref' element={<Refinclass/>}/>
