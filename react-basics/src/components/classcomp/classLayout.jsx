@@ -14,6 +14,8 @@ export default class ClassLayout extends Component {
         {text:"ref" , url:"/class/ref"},
         {text:"life cycle" , url:"/class/lifecycle"},
         {text:"pure comp" , url:"/class/pure"},
+        {text:"error boundary" , url:"/class/error"},
+
       ]
       navlinkstyles = ({isActive})=>({
         color:isActive ? "red" : "",

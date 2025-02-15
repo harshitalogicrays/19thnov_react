@@ -5,7 +5,7 @@ export default class Forminclass extends Component {
     super(props)
     this.state = {       
       title:"Form Design",
-      user:{username:'',email:'',password:'',cpassword:''}
+      user:{username:'',email:'',password:'',cpassword:''},
     }
   }
   handleChange =(e)=>{
@@ -26,7 +26,8 @@ export default class Forminclass extends Component {
         <div className="row">
             <div className="mb-3 col">
                 <label htmlFor="username" className="form-label">Username</label>
-                <input type="text" className="form-control" name="username" value={this.state.user.username} onChange={this.handleChange}/>
+                <input type="text" className="form-control" name="username" 
+                value={this.state.user.username} onChange={this.handleChange}/>
             </div>
             <div className="mb-3 col">
                 <label htmlFor="email" className="form-label">Email</label>

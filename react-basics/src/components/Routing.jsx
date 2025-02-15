@@ -37,6 +37,7 @@ import LifeCyclemethods from './classcomp/LifeCyclemethods'
 import Purecompdemo from './classcomp/Purecompdemo'
 import Refinclass from './classcomp/Refinclass'
 import FormValidationsinClass from './classcomp/FormValidationsinclass'
+import ErrorBoundaryDemo from './classcomp/ErrorBoundaryDemo'
 const Routing = () => {
   return (
     <Routes>
@@ -80,6 +81,7 @@ const Routing = () => {
               <Route path='lifecycle' element={<LifeCyclemethods/>}/>
               <Route path='pure' element={<Purecompdemo/>}/>
               <Route path='ref' element={<Refinclass/>}/>
+              <Route path='error' element={<ErrorBoundaryDemo/>}/>
 
           </Route>
 

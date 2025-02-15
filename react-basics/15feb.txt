@@ -1,0 +1,30 @@
+react class component - life cycle methods  -
+mounting phase - constructor
+updating phase 
+unmounting phase 
+error boundary 
+
+
+render()
+
+pure component
+error boundary 
+
+///////////////////////////////////////////////////////////////////////////////////
+promise -> then and catch , async and await 
+
+API calling - 
+
+fetch API - javascript provides it 
+axios - npm i axios 
+
+Fake API store - 
+GET - fetch 
+POST - submit on server
+PUT - update data 
+DELETE - delete data 
+CRUD operations - 
+
+
+// GET - fetch and axios 
+tailwindcss - new project 
