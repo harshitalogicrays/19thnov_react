@@ -38,6 +38,7 @@ import Purecompdemo from './classcomp/Purecompdemo'
 import Refinclass from './classcomp/Refinclass'
 import FormValidationsinClass from './classcomp/FormValidationsinclass'
 import ErrorBoundaryDemo from './classcomp/ErrorBoundaryDemo'
+import APIcallingdemo from './APIcallingdemo'
 const Routing = () => {
   return (
     <Routes>
@@ -68,6 +69,7 @@ const Routing = () => {
                   <Route path='customhook' element={<CustomHookDemo/>}/>
 
               </Route>
+               <Route path='api' element={<APIcallingdemo/>}/>
           </Route>
           <Route path='login' element={<Login/>}/>
           <Route path='register' element={<Register/>}/>
@@ -84,6 +86,7 @@ const Routing = () => {
               <Route path='error' element={<ErrorBoundaryDemo/>}/>
 
           </Route>
+
 
       </Route>    
 

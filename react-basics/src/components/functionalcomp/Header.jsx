@@ -45,6 +45,7 @@ const Header = () => {
                
             </NavDropdown>
             <Nav.Link as={NavLink} to='/class'>Class Components</Nav.Link>
+            <Nav.Link as={NavLink} to='/api'>API demo</Nav.Link>
 
           </Nav>
 

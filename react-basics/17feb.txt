@@ -1,0 +1,63 @@
+API calling - 
+
+fetch API - javascript provides it 
+axios - npm i axios 
+
+Fake API store - 
+GET - fetch 
+POST - submit on server
+PUT - update data 
+DELETE - delete data 
+CRUD operations - 
+
+
+// GET - fetch and axios 
+tailwindcss - new project 
+            
+            req            req 
+frontend -------> backend -----> db 
+         <-------         <------
+          res              res 
+
+FAKE API -  
+GET Request - 
+fetch("url")
+.then((res)=>{
+    return res.json()
+})
+.then((result=>{
+    console.log(result)
+}))
+.catch((err)=>console.log(err))
+
+GET - 
+fetch("url") or 
+
+fetch("url",{
+    method:"GET"
+})
+
+POST - 
+fetch("url" , {
+    method:"POST", 
+    headers:{'content-type':'application/json'},
+    body: JSON.stringify(data)
+})
+
+fetch("url" , {
+    method:"PUT", 
+    headers:{'content-type':'application/json'},
+    body: JSON.stringify(data)
+})
+
+fetch("url",{
+    method:"DELETE"
+})
+
+=============================================
+axios - npm i axios 
+
+axios.get("url")
+axios.post("url",data)
+axios.put("url",data)
+axios.delete("url")

@@ -1,0 +1,6 @@
+tailwindcss  -  
+
+routing 
+components 
+register and login 
+products 
