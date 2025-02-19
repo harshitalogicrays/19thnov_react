@@ -1,19 +1,16 @@
 import React from 'react'
-import { Outlet } from 'react-router'
+import { NavLink, Outlet } from 'react-router'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { HiBars3, HiBell, HiXMark } from 'react-icons/hi2'
+import { HiBars3, HiBell, HiShoppingCart, HiXMark } from 'react-icons/hi2'
 
 const Header = () => {
   const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-  ]
+    { name: 'Home', href: '/'},
+    { name: 'About', href: '/about' },
+    { name: 'products', href: '/products' },
+     ]
   
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
+  const navLinks = ({isActive})=>isActive? 'rounded-md px-3 py-2 text-sm font-medium bg-gray-900 text-white' : 'rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
   return (
     <>
     <Disclosure as="nav" className="bg-gray-800">
@@ -30,38 +27,31 @@ const Header = () => {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
+              <h1 className="text-white">CRUD</h1>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    aria-current={item.current ? 'page' : undefined}
-                    className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium',
-                    )}
-                  >
+                  <NavLink key={item.name} to={item.href} className={navLinks} >
                     {item.name}
-                  </a>
+                  </NavLink>
                 ))}
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className="hidden sm:ml-6 sm:block">
+            <NavLink to='/register' className={navLinks}>Register</NavLink>
+            <NavLink to='/login' className={navLinks}>Login</NavLink>
+            </div>
+      
+
             <button
               type="button"
-              className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-            >
+              className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden me-3">
               <span className="absolute -inset-1.5" />
-              <span className="sr-only">View notifications</span>
-              <HiBell aria-hidden="true" className="size-6" />
+              <HiShoppingCart aria-hidden="true" className="size-9" />
+              <span className='absolute -top-2 -right-3 bg-red-500 px-2 font-bold    text-white rounded-full'>0</span>
             </button>
 
             {/* Profile dropdown */}
@@ -114,19 +104,15 @@ const Header = () => {
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (
-            <DisclosureButton
+            <NavLink
               key={item.name}
-              as="a"
-              href={item.href}
-              aria-current={item.current ? 'page' : undefined}
-              className={classNames(
-                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium',
-              )}
-            >
+              to={item.href}
+              className = {({isActive})=>isActive ? 'block rounded-md px-3 py-2 text-base font-medium bg-gray-900 text-white' : 'block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'}>
               {item.name}
-            </DisclosureButton>
+            </NavLink>
           ))}
+           <NavLink to='/register' className = {({isActive})=>isActive ? 'block rounded-md px-3 py-2 text-base font-medium bg-gray-900 text-white' : 'block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'}>Register</NavLink>
+           <NavLink to='/login' className = {({isActive})=>isActive ? 'block rounded-md px-3 py-2 text-base font-medium bg-gray-900 text-white' : 'block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'}>Login</NavLink>
         </div>
       </DisclosurePanel>
     </Disclosure>

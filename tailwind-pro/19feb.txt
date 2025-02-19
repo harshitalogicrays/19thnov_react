@@ -1,0 +1,11 @@
+toast - white color
+toast.error = red 
+toast.warning - yellow 
+toast.success -  green
+toast.info - blue 
+
+
+register 
+login 
+logout 
+sessionStorage 
