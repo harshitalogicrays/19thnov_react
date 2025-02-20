@@ -8,15 +8,18 @@ import Products from './Products'
 import Register from './Register'
 import Login from './Login'
 import PageNotFound from './PageNotFound'
+import { Cart } from './Cart'
+import CartContext from '../CartContext'
 
 const Routing = () => {
   return (
     <Routes>
-        <Route path='/' element={<App/>}>
+        <Route path='/' element={<CartContext><App/></CartContext>}>
             <Route element={<Header/>}>
                 <Route index element={<Home/>}/>
                 <Route path="about" element={<About/>}/>
-                <Route path="products" element={<Products/>}/>              
+                <Route path="products" element={<Products/>}/>        
+                <Route path="cart" element={<Cart/>}/>              
             </Route>
             <Route path="register" element={<Register/>}/>
             <Route path="login" element={<Login/>}/>

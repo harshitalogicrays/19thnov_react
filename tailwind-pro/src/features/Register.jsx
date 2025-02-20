@@ -1,11 +1,25 @@
+import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { toast } from 'react-toastify'
 
 const Register = () => {
+  const redirect = useNavigate()
   const [user,setUser] =useState({username:'',email:'',password:'',cpassword:'',role:'1'})
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault()
-    alert(JSON.stringify(user))
+   try{
+      // await fetch("https://67b69e6007ba6e5908412007.mockapi.io/users",
+      //   {method :"POST",
+      //     headers:{'content-type':'application/json'},
+      //     body:JSON.stringify(user)
+      //   })
+      await axios.post("https://67b69e6007ba6e5908412007.mockapi.io/users",user)
+      
+        toast.success("registered successfully")
+        redirect('/login')
+   }
+   catch(err){toast.error(err.message)}
   }
   return (
    <>

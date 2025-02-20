@@ -1,11 +1,25 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { toast } from 'react-toastify'
 
 const Login = () => {
+  const redirect = useNavigate()
   const {register,handleSubmit,formState:{errors},trigger,setFocus} =useForm()
-  const loginUser = (data)=>{
-    alert(JSON.stringify(data))
+  const loginUser = async(data)=>{
+    try{
+        const res = await fetch(`https://67b69e6007ba6e5908412007.mockapi.io/users?email=${data.email}`)
+        const result = await res.json()
+        let {email,password,role,username,id} = result[0]
+        if(password == data.password){
+          let obj = {isLoggedIn:true,username,email,role,id}
+          sessionStorage.setItem("19thnov",JSON.stringify(obj))
+            toast.success("loggedIn successfully")
+            redirect('/')
+        }
+        else {toast.error("Invalid Credentials")}
+    }
+    catch(err){toast.error(err.message)}
   }
   useEffect(()=>{setFocus('email')},[])
   return (

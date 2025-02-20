@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 const ProductsItems = ({products}) => {
     const handleAddToCart=()=>{
-        toast.warning("product added")
+        toast.success("product added")
     }
   return (
     <>

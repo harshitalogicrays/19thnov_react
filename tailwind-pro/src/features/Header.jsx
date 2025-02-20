@@ -1,9 +1,13 @@
-import React from 'react'
-import { NavLink, Outlet } from 'react-router'
+import React, { useEffect, useState } from 'react'
+import { Link, NavLink, Outlet, useNavigate } from 'react-router'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { HiBars3, HiBell, HiShoppingCart, HiXMark } from 'react-icons/hi2'
+import { toast } from 'react-toastify'
+import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
 
 const Header = () => {
+  const navigate = useNavigate()
+  const [username,setUsername]=useState("Guest") 
   const navigation = [
     { name: 'Home', href: '/'},
     { name: 'About', href: '/about' },
@@ -11,6 +15,20 @@ const Header = () => {
      ]
   
   const navLinks = ({isActive})=>isActive? 'rounded-md px-3 py-2 text-sm font-medium bg-gray-900 text-white' : 'rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+     
+     const handleLogout=()=>{
+      if(sessionStorage.getItem("19thnov")){
+        sessionStorage.removeItem("19thnov")
+        toast.success("loggedOut successfully")
+        navigate('/')
+      }
+     }
+     useEffect(()=>{
+      if(sessionStorage.getItem("19thnov")){
+          let obj = JSON.parse(sessionStorage.getItem("19thnov"))
+         setUsername(obj.username)
+      } else setUsername("Guest")
+     },[sessionStorage.getItem("19thnov")])
   return (
     <>
     <Disclosure as="nav" className="bg-gray-800">
@@ -40,20 +58,22 @@ const Header = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div className="hidden sm:ml-6 sm:block">
-            <NavLink to='/register' className={navLinks}>Register</NavLink>
-            <NavLink to='/login' className={navLinks}>Login</NavLink>
-            </div>
-      
-
-            <button
+            <Link to='/cart'
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden me-3">
               <span className="absolute -inset-1.5" />
               <HiShoppingCart aria-hidden="true" className="size-9" />
               <span className='absolute -top-2 -right-3 bg-red-500 px-2 font-bold    text-white rounded-full'>0</span>
-            </button>
-
+            </Link>
+            <div className="hidden sm:ml-6 sm:block">
+            <ShowOnLogout>
+            <NavLink to='/register' className={navLinks}>Register</NavLink>
+            <NavLink to='/login' className={navLinks}>Login</NavLink>
+            </ShowOnLogout>
+            </div>
+      
+            <ShowOnLogin>
+            <NavLink className="text-white">Welcome {username}</NavLink>
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
               <div>
@@ -88,15 +108,14 @@ const Header = () => {
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                  <button onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                   >
                     Sign out
-                  </a>
+                  </button>
                 </MenuItem>
               </MenuItems>
             </Menu>
+            </ShowOnLogin>
           </div>
         </div>
       </div>
@@ -111,8 +130,10 @@ const Header = () => {
               {item.name}
             </NavLink>
           ))}
+          <ShowOnLogout>
            <NavLink to='/register' className = {({isActive})=>isActive ? 'block rounded-md px-3 py-2 text-base font-medium bg-gray-900 text-white' : 'block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'}>Register</NavLink>
            <NavLink to='/login' className = {({isActive})=>isActive ? 'block rounded-md px-3 py-2 text-base font-medium bg-gray-900 text-white' : 'block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'}>Login</NavLink>
+           </ShowOnLogout>
         </div>
       </DisclosurePanel>
     </Disclosure>
