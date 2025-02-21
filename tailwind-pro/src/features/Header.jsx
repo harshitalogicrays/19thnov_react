@@ -4,8 +4,10 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { HiBars3, HiBell, HiShoppingCart, HiXMark } from 'react-icons/hi2'
 import { toast } from 'react-toastify'
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
+import { useCart } from '../CartContext'
 
 const Header = () => {
+  const {cartItems} =useCart()
   const navigate = useNavigate()
   const [username,setUsername]=useState("Guest") 
   const navigation = [
@@ -63,7 +65,7 @@ const Header = () => {
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden me-3">
               <span className="absolute -inset-1.5" />
               <HiShoppingCart aria-hidden="true" className="size-9" />
-              <span className='absolute -top-2 -right-3 bg-red-500 px-2 font-bold    text-white rounded-full'>0</span>
+              <span className='absolute -top-2 -right-3 bg-red-500 px-2 font-bold    text-white rounded-full'>{cartItems.length}</span>
             </Link>
             <div className="hidden sm:ml-6 sm:block">
             <ShowOnLogout>

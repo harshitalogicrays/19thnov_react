@@ -1,9 +1,11 @@
 import React from 'react'
 import { toast } from 'react-toastify'
+import { useCart } from '../CartContext'
 
 const ProductsItems = ({products}) => {
-    const handleAddToCart=()=>{
-        toast.success("product added")
+  const cartcon = useCart()
+    const handleAddToCart=(product)=>{
+       cartcon.ADD_TO_CART(product)
     }
   return (
     <>
@@ -26,7 +28,7 @@ const ProductsItems = ({products}) => {
                 </div>
                 <p className="text-sm font-medium text-gray-900">{product.price}</p>
               </div>
-              <button type="button" className='border-1 p-2 bg-indigo-500 text-white rounded-lg mt-3 cursor-pointer relative' onClick={handleAddToCart}>Add to cart</button>
+              <button type="button" className='border-1 p-2 bg-indigo-500 text-white rounded-lg mt-3 cursor-pointer relative' onClick={()=>handleAddToCart(product)}>Add to cart</button>
             </div>
           ))}
     </>
