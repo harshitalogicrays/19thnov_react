@@ -1,3 +1,5 @@
+import { Navigate } from "react-router"
+
 export const ShowOnLogin = ({children})=>{
     if(sessionStorage.getItem("19thnov") != null){
         return children
@@ -10,4 +12,11 @@ export const ShowOnLogout = ({children})=>{
         return children
     }
     else return null
+}
+
+export const Protected = ({children})=>{
+    if(sessionStorage.getItem("19thnov") != null){
+        return children
+    }
+    else return <Navigate to='/login' replace={true}/>
 }

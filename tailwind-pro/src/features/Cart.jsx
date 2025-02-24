@@ -1,10 +1,24 @@
 import React, { useEffect } from 'react'
 import { HiTrash } from 'react-icons/hi2';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { useCart } from '../CartContext';
 export const Cart = () => {
+
   const {cartItems,total,increase,decrease,removeFromCart,emptyCart,calculateTotal} = useCart()
    useEffect(()=>{ calculateTotal()},[cartItems])
+
+   const location = useLocation()
+   console.log(location)
+   
+  const redirect = useNavigate()
+   const handleCheckout = ()=>{
+    if(cartItems.length!=0){
+      if(sessionStorage.getItem("19thnov") != null){
+        redirect('/checkout')
+      }
+      else {redirect('/login',{state:{'path':location.pathname}})}
+    }
+   }
       return ( <div className="max-w-7xl mx-auto p-8 bg-gray-100">
       <h1 className="text-4xl font-bold mb-8 text-gray-800">Shopping Cart</h1>
       <div className="flex flex-col lg:flex-row gap-12">
@@ -58,7 +72,8 @@ export const Cart = () => {
             onClick={()=>emptyCart()}>
                 Empty Cart
               </button>
-              <button className={`mt-8 w-full bg-indigo-600 text-white py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition duration-200 ${cartItems.length==0 &&'opacity-55' }`}>
+              <button className={`mt-8 w-full bg-indigo-600 text-white py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition duration-200 ${cartItems.length==0 &&'opacity-55' }`}
+              onClick={handleCheckout}>
                 Proceed to Checkout
               </button>
             </div>

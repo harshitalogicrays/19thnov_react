@@ -3,8 +3,8 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { HiBars3, HiBell, HiShoppingCart, HiXMark } from 'react-icons/hi2'
 import { toast } from 'react-toastify'
-import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
 import { useCart } from '../CartContext'
+import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
 
 const Header = () => {
   const {cartItems} =useCart()

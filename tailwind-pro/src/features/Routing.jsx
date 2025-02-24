@@ -10,6 +10,8 @@ import Login from './Login'
 import PageNotFound from './PageNotFound'
 import { Cart } from './Cart'
 import CartContext from '../CartContext'
+import Checkout from './Checkout'
+import { Protected } from './hiddenlinks'
 
 const Routing = () => {
   return (
@@ -19,7 +21,9 @@ const Routing = () => {
                 <Route index element={<Home/>}/>
                 <Route path="about" element={<About/>}/>
                 <Route path="products" element={<Products/>}/>        
-                <Route path="cart" element={<Cart/>}/>              
+                <Route path="cart" element={<Cart/>}/>    
+                <Route path="checkout" element={<Protected> <Checkout/></Protected>}/>              
+
             </Route>
             <Route path="register" element={<Register/>}/>
             <Route path="login" element={<Login/>}/>

@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
 
 const Login = () => {
+  const location = useLocation()
+  const redirectURL = location?.state ? location.state.path :'/'
+
   const redirect = useNavigate()
   const {register,handleSubmit,formState:{errors},trigger,setFocus} =useForm()
   const loginUser = async(data)=>{
@@ -15,7 +18,8 @@ const Login = () => {
           let obj = {isLoggedIn:true,username,email,role,id}
           sessionStorage.setItem("19thnov",JSON.stringify(obj))
             toast.success("loggedIn successfully")
-            redirect('/')
+            // redirect('/')
+            redirect(redirectURL)
         }
         else {toast.error("Invalid Credentials")}
     }
