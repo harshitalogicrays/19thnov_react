@@ -1,0 +1,59 @@
+flux - 
+redux - Redux is an open-source JavaScript library for managing and centralizing application state.
+A JS library for predictable and maintainable global state management
+
+react , angular , vuejs
+Similar to Facebook's Flux architecture
+
+@reduxjs/toolkit  - The official, opinionated, batteries-included toolset for efficient Redux development
+
+react-redux 
+
+store - area where we will keep our state 
+action
+reducers 
+state - data (global variable)
+
+single source of truth  -> one app can have only one store.
+
+view -------> action ---------> reducers -------> store (state)
+
+store -------> view 
+
+Ex-  cake shop 
+1. customer 
+2. shopkeeper 
+3. cake shelf 
+4. cake, muffins, cupcakes, browine, bread, chocolate, sandwich etc.
+
+customer --------> BUY_CAKE --------->shopkeeper -------> cake shelf(cake...)
+                                      (function) 
+           
+cake shelf----------> customer
+
+cake dealer --------> SELL_CAKE --------->shopkeeper -------> cake shelf(cake...)
+                                          (function) 
+
+cake shlef - store 
+cake, muffins, cupcakes - state 
+customer -  view 
+BUY_CAKE -  action 
+shopkeeper -  reducers
+
+reducers -  pure functions
+action dispatch 
+
+
+customer --------> BUY_CAKE --------->shopkeeper ------------------> cake shelf(cake...)
+  view             action             reducers (pure function)       store   (state)
+                  dispatch
+
+cake shelf-----------------> customer
+store         select   view 
+
+useDispatch hook 
+useSelector hook 
+
+slices  -  
+cakeSlice - pure functions, cake state 
+browineSlice -  pure function , icecream , syrup etc. 
