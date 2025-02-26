@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useNavigate } from 'react-router'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { HiBars3, HiBell, HiShoppingCart, HiXMark } from 'react-icons/hi2'
+import { HiBars3, HiBell, HiMagnifyingGlass, HiShoppingCart, HiXMark } from 'react-icons/hi2'
 import { toast } from 'react-toastify'
 import { useCart } from '../CartContext'
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
@@ -59,6 +59,12 @@ const Header = () => {
               </div>
             </div>
           </div>
+            
+            <div className='relative sm:block hidden'>
+              <input type="text" name="search" className='bg-gray-700 text-white rounded-full pl-10 py-1 pr-4 focus:outline-none focus:ring-2 focus:ring-white' placeholder='search' />
+              <HiMagnifyingGlass className='absolute left-3 top-2 w-5 h-5 text-gray-400' />
+            </div>
+
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Link to='/cart'
               type="button"
@@ -132,6 +138,10 @@ const Header = () => {
               {item.name}
             </NavLink>
           ))}
+           <div className='relative'>
+              <input type="text" name="search" className='bg-gray-700 text-white rounded-full pl-10 py-1 pr-4 focus:outline-none focus:ring-2 focus:ring-white' placeholder='search' />
+              <HiMagnifyingGlass className='absolute left-3 top-2 w-5 h-5 text-gray-400' />
+            </div>
           <ShowOnLogout>
            <NavLink to='/register' className = {({isActive})=>isActive ? 'block rounded-md px-3 py-2 text-base font-medium bg-gray-900 text-white' : 'block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'}>Register</NavLink>
            <NavLink to='/login' className = {({isActive})=>isActive ? 'block rounded-md px-3 py-2 text-base font-medium bg-gray-900 text-white' : 'block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'}>Login</NavLink>
