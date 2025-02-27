@@ -5,6 +5,9 @@ import { HiBars3, HiBell, HiMagnifyingGlass, HiShoppingCart, HiXMark } from 'rea
 import { toast } from 'react-toastify'
 import { useCart } from '../CartContext'
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
+import useFetchApiData from '../useFetchApiData'
+import { useDispatch } from 'react-redux'
+import { FILTER_BY_SEARCH } from '../redux/filterSlice'
 
 const Header = () => {
   const {cartItems} =useCart()
@@ -31,6 +34,16 @@ const Header = () => {
          setUsername(obj.username)
       } else setUsername("Guest")
      },[sessionStorage.getItem("19thnov")])
+
+    //search 
+    const dispatch = useDispatch()
+    let {data} = useFetchApiData("https://fakestoreapi.com/products")
+    console.log(data)
+    let [search,setSearch] = useState('')
+    useEffect(()=>{
+      dispatch(FILTER_BY_SEARCH({products:data , search:search}))
+    },[search])
+    
   return (
     <>
     <Disclosure as="nav" className="bg-gray-800">
@@ -61,7 +74,8 @@ const Header = () => {
           </div>
             
             <div className='relative sm:block hidden'>
-              <input type="text" name="search" className='bg-gray-700 text-white rounded-full pl-10 py-1 pr-4 focus:outline-none focus:ring-2 focus:ring-white' placeholder='search' />
+              <input type="text" name="search" value={search} onChange={(e)=>setSearch(e.target.value)}
+              className='bg-gray-700 text-white rounded-full pl-10 py-1 pr-4 focus:outline-none focus:ring-2 focus:ring-white' placeholder='search' />
               <HiMagnifyingGlass className='absolute left-3 top-2 w-5 h-5 text-gray-400' />
             </div>
 
@@ -139,7 +153,8 @@ const Header = () => {
             </NavLink>
           ))}
            <div className='relative'>
-              <input type="text" name="search" className='bg-gray-700 text-white rounded-full pl-10 py-1 pr-4 focus:outline-none focus:ring-2 focus:ring-white' placeholder='search' />
+              <input type="text" name="search" value={search} onChange={(e)=>setSearch(e.target.value)}
+              className='bg-gray-700 text-white rounded-full pl-10 py-1 pr-4 focus:outline-none focus:ring-2 focus:ring-white' placeholder='search' />
               <HiMagnifyingGlass className='absolute left-3 top-2 w-5 h-5 text-gray-400' />
             </div>
           <ShowOnLogout>
