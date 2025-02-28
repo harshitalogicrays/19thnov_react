@@ -11,7 +11,11 @@ import PageNotFound from './PageNotFound'
 import { Cart } from './Cart'
 import CartContext from '../CartContext'
 import Checkout from './Checkout'
-import { Protected } from './hiddenlinks'
+import { Protected, ProtectedAdmin } from './hiddenlinks'
+import AdminLayout from './Admin/AdminLayout'
+import Dashboard from './Admin/Dashboard'
+import AddProduct from './Admin/AddProduct'
+import ViewProducts from './Admin/ViewProducts'
 
 const Routing = () => {
   return (
@@ -23,10 +27,15 @@ const Routing = () => {
                 <Route path="products" element={<Products/>}/>        
                 <Route path="cart" element={<Cart/>}/>    
                 <Route path="checkout" element={<Protected> <Checkout/></Protected>}/>              
-
             </Route>
             <Route path="register" element={<Register/>}/>
             <Route path="login" element={<Login/>}/>
+
+            <Route path='admin' element={<ProtectedAdmin><AdminLayout/></ProtectedAdmin>}>
+               <Route index element={<Dashboard/>}/>
+               <Route path='add/product' element={<AddProduct/>}/>
+               <Route path='view/product' element={<ViewProducts/>}/>
+            </Route>
         </Route>
         <Route path="*" element={<PageNotFound/>}/>
     </Routes>

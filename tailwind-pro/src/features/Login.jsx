@@ -19,7 +19,8 @@ const Login = () => {
           sessionStorage.setItem("19thnov",JSON.stringify(obj))
             toast.success("loggedIn successfully")
             // redirect('/')
-            redirect(redirectURL)
+            if(role=="1") redirect(redirectURL)
+            else if(role=="0") redirect('/admin')
         }
         else {toast.error("Invalid Credentials")}
     }

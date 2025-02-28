@@ -3,10 +3,14 @@ import ProductsItems from './ProductsItems'
 import useFetchApiData from '../useFetchApiData'
 import { useDispatch, useSelector } from 'react-redux'
 import { FILTER_BY_CATEGORY, selectCategory, selectFilters, selectSearch } from '../redux/filterSlice'
+import { allproducts, selectProducts } from '../redux/productSlice'
 
 const Products = () => {
   const dispatch = useDispatch()
-  let {data:products} = useFetchApiData("https://fakestoreapi.com/products")
+  let {data} = useFetchApiData("https://67b69e6007ba6e5908412007.mockapi.io/products")
+  useEffect(()=>{ dispatch(allproducts(data)) },[data])
+  const products = useSelector(selectProducts)
+    
   const searchval  = useSelector(selectSearch)
   const filterProducts = useSelector(selectFilters) 
   const catval = useSelector(selectCategory)

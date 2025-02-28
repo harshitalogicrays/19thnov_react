@@ -2,7 +2,7 @@
   
   const useFetchApiData = (url) => {
     let [data,setData]  = useState([])
-    const getProducts =async()=>{
+    const getData =async()=>{
       try{
         const res = await fetch(url)
         const data1 =  await res.json()
@@ -11,7 +11,7 @@
       catch(err){console.log(err)}
     }
     useEffect(()=>{
-        getProducts()
+      getData()
     },[])
     return ({data})
   }
