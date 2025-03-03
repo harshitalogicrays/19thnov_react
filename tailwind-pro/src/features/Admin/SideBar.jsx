@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaHome, FaShoppingBag } from 'react-icons/fa'
+import { FaHome, FaListAlt, FaShoppingBag } from 'react-icons/fa'
 import { FaList } from 'react-icons/fa6'
 import { NavLink } from 'react-router'
 
@@ -19,6 +19,9 @@ const SideBar = () => {
           <NavLink to='/admin/view/product' className="flex items-center p-4 hover:bg-gray-700">
           <FaList className="mr-0 sm:mr-3" />
           <span className="hidden sm:block">View Products</span> </NavLink>
+          <NavLink to='/admin/view/orders' className="flex items-center p-4 hover:bg-gray-700">
+          <FaListAlt className="mr-0 sm:mr-3" />
+          <span className="hidden sm:block">Orders</span> </NavLink>
       </nav>  </div>	
   )
 }

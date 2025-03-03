@@ -35,6 +35,8 @@ const Routing = () => {
                <Route index element={<Dashboard/>}/>
                <Route path='add/product' element={<AddProduct/>}/>
                <Route path='view/product' element={<ViewProducts/>}/>
+               <Route path='edit/product/:id' element={<AddProduct/>}/>
+
             </Route>
         </Route>
         <Route path="*" element={<PageNotFound/>}/>

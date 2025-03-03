@@ -1,17 +1,31 @@
-import React, { useEffect } from 'react'
-import useFetchApiData from '../../useFetchApiData'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { allproducts, selectProducts } from '../../redux/productSlice'
+import {  fetchProducts, selectProducts } from '../../redux/productSlice'
 import { FaPenAlt, FaTrashAlt } from 'react-icons/fa'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { Link } from 'react-router'
 
 const ViewProducts = () => {
-    const {data} = useFetchApiData("https://67b69e6007ba6e5908412007.mockapi.io/products")
     const dispatch = useDispatch()
+    const [isDeleted,setIsDeleted] =useState(false)
     useEffect(()=>{
-        dispatch(allproducts(data))
-    },[data])
+        dispatch(fetchProducts())
+    },[isDeleted])
+
     const products = useSelector(selectProducts)
     console.log(products)
+
+    const deleteProduct=async(id)=>{
+      if(window.confirm("are you sure to delete this??")){
+        try{
+          await axios.delete(`https://67b69e6007ba6e5908412007.mockapi.io/products/${id}`)
+          setIsDeleted(true)
+          toast.success("product deleted")
+     }
+     catch(err){toast.error(err.message)}
+      }
+    }
   return (
     <div className="max-w-4xl mx-auto mt-2 p-6 bg-white shadow-md rounded-lg">
     <h2 className="text-2xl font-bold mb-4 text-gray-800">Products</h2>
@@ -63,9 +77,10 @@ const ViewProducts = () => {
                 <td className="px-6 py-4 text-sm text-gray-700">
                 {product.stock} </td>
               <td className="px-6 py-4 text-sm text-gray-700">
-              
-              <button type="button" className='me-2 bg-green-400 text-white p-3 rounded-md '><FaPenAlt/></button>
-              <button type="button"  className='me-2 bg-red-400 text-white p-3 rounded-md ' ><FaTrashAlt/></button>
+              <Link to={`/admin/edit/product/${product.id}`}>
+              <button type="button" className='me-2 bg-green-400 text-white p-3 rounded-md '><FaPenAlt/></button></Link>
+              <button type="button"  className='me-2 bg-red-400 text-white p-3 rounded-md ' 
+              onClick={()=>deleteProduct(product.id)}><FaTrashAlt/></button>
                </td>
             </tr>
           )} 

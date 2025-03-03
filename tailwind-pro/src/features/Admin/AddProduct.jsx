@@ -1,13 +1,26 @@
 import axios from 'axios'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router'
 import { toast } from 'react-toastify'
+import { selectProducts } from '../../redux/productSlice'
 
 const AddProduct = () => {
     const redirect = useNavigate()
     const categories = ["men's clothing","women's clothing","grocery","furniture","electronics"]
     let [product,setProduct] = useState({title:'',category:'',price:'',stock:'',image:'',brand:'',description:''})
     let [picLoading,setPicLoading] = useState(false)
+
+    //edit 
+      const {id} = useParams()
+      const products = useSelector(selectProducts)
+      const productEdit =  products.find(item=>item.id == id)
+      useEffect(()=>{
+          if(id) setProduct({...productEdit})
+          else setProduct({title:'',category:'',price:'',stock:'',image:'',brand:'',description:''})
+      },[id])
+
+
     const handleImage =async(e)=>{
         const img = e.target.files[0]   
         const ext = ["image/jpeg" ,"image/png","image/gif","image/webp"]  
@@ -32,17 +45,29 @@ const AddProduct = () => {
     }
     const handleSubmit = async(e)=>{
         e.preventDefault()
+       if(!id){//add
+          try{
+            await axios.post("https://67b69e6007ba6e5908412007.mockapi.io/products",product)
+          
+            toast.success("product added")
+            redirect('/admin/view/product')
+            }
+          catch(err){toast.error(err.message)}
+            }
+       else {//update
         try{
-        await axios.post("https://67b69e6007ba6e5908412007.mockapi.io/products",product)
-      
-        toast.success("product added")
-        redirect('/admin/view/product')
-   }
-   catch(err){toast.error(err.message)}
+          await axios.put(`https://67b69e6007ba6e5908412007.mockapi.io/products/${id}`,product)
+        
+          toast.success("product updated")
+          redirect('/admin/view/product')
+          }
+        catch(err){toast.error(err.message)}
+          }
+
     }
   return (
     <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4">Add Product</h2>
+        <h2 className="text-2xl font-semibold mb-4">{id? "Edit " : "Add "} Product</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="flex  gap-4">
             <div className=" flex-1">
@@ -78,7 +103,8 @@ const AddProduct = () => {
                 className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter image URL" onChange={handleImage}
               />
-     
+              {product.image && 
+              <img src={product.image} className='mt-3 w-20 h-20'/>}
             </div></div>
           <div className="flex gap-4">
             <div className="flex-1">
@@ -110,7 +136,7 @@ const AddProduct = () => {
             className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
           >
             {picLoading ? 
-            <div class="animate-spin w-10 h-10 mx-auto border-4 border-t-transparent border-white rounded-full " ></div> : "Add Product" }
+            <div class="animate-spin w-10 h-10 mx-auto border-4 border-t-transparent border-white rounded-full " ></div> : <>{id ? "Update Product " : "Add Product"}</> }
           </button>
         </form>
       </div>
