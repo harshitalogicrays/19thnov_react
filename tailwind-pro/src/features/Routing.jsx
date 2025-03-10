@@ -16,6 +16,8 @@ import AdminLayout from './Admin/AdminLayout'
 import Dashboard from './Admin/Dashboard'
 import AddProduct from './Admin/AddProduct'
 import ViewProducts from './Admin/ViewProducts'
+import CheckoutPayment from './CheckoutPayment'
+import ThankYou from './ThankYou'
 
 const Routing = () => {
   return (
@@ -26,7 +28,10 @@ const Routing = () => {
                 <Route path="about" element={<About/>}/>
                 <Route path="products" element={<Products/>}/>        
                 <Route path="cart" element={<Cart/>}/>    
-                <Route path="checkout" element={<Protected> <Checkout/></Protected>}/>              
+                <Route path="checkout" element={<Protected> <Checkout/></Protected>}/>       
+                <Route path="checkoutpayment" element={<Protected> <CheckoutPayment/></Protected>}/>              
+                <Route path="thankyou" element={<Protected> <ThankYou/></Protected>}/>              
+
             </Route>
             <Route path="register" element={<Register/>}/>
             <Route path="login" element={<Login/>}/>
