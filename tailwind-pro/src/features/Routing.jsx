@@ -18,6 +18,10 @@ import AddProduct from './Admin/AddProduct'
 import ViewProducts from './Admin/ViewProducts'
 import CheckoutPayment from './CheckoutPayment'
 import ThankYou from './ThankYou'
+import MyOrders from './MyOrders'
+import MyOrderDetails from './MyOrderDetails'
+import Orders from './Admin/Orders'
+import OrderDetails from './Admin/OrderDetails'
 
 const Routing = () => {
   return (
@@ -31,7 +35,8 @@ const Routing = () => {
                 <Route path="checkout" element={<Protected> <Checkout/></Protected>}/>       
                 <Route path="checkoutpayment" element={<Protected> <CheckoutPayment/></Protected>}/>              
                 <Route path="thankyou" element={<Protected> <ThankYou/></Protected>}/>              
-
+                <Route path="myorders" element={<Protected> <MyOrders/></Protected>}/>              
+                <Route path="myorders/:id" element={<Protected> <MyOrderDetails/></Protected>}/>              
             </Route>
             <Route path="register" element={<Register/>}/>
             <Route path="login" element={<Login/>}/>
@@ -41,6 +46,8 @@ const Routing = () => {
                <Route path='add/product' element={<AddProduct/>}/>
                <Route path='view/product' element={<ViewProducts/>}/>
                <Route path='edit/product/:id' element={<AddProduct/>}/>
+               <Route path='view/orders' element={<Orders/>}/>
+               <Route path='view/orders/:id' element={<OrderDetails/>}/>
 
             </Route>
         </Route>
