@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchorders, selectorders } from '../../redux/orderSlice'
+import { Link } from 'react-router'
 
 const Orders = () => {
     const dispatch = useDispatch()
@@ -20,6 +21,9 @@ const Orders = () => {
           <th className="px-6 py-3 text-left text-sm font-medium text-gray-700 uppercase">
               Order Id
             </th>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-700 uppercase">
+              Username
+            </th>
           <th className="px-6 py-3 text-left text-sm font-medium text-gray-700 uppercase">
               Order Date and Time
             </th>
@@ -38,7 +42,7 @@ const Orders = () => {
           </tr>
         </thead>
         <tbody>
-          {orders.length==0 &&   <tr>  <td colSpan="5"
+          {orders.length==0 &&   <tr>  <td colSpan="6"
                 className="px-6 py-4 text-center text-sm text-gray-500"  >
                 No Order added. </td> </tr>}
         
@@ -47,15 +51,18 @@ const Orders = () => {
               className={`border-b ${index % 2 != 0 ? "bg-gray-50" : "bg-white"
                 }`} >
               <td  className="px-6 py-4 text-sm text-gray-700">{order.id}</td>
+              <td  className="px-6 py-4 text-sm text-gray-700">{order.username}</td>
+
               <td className="px-6 py-4 text-sm text-gray-700"> {order.orderDate} at {order.orderTime}  </td>
-              <td className="px-6 py-4 text-sm text-gray-700"> {order.total}  </td>
+              <td className="px-6 py-4 text-sm text-gray-700"> &#8377;{order.total}  </td>
               <td className="px-6 py-4 text-sm text-gray-700">{order.paymentMethod} </td>
               <td className="px-6 py-4 text-sm text-gray-700">
                 {order.status=="delivered" ? <span className="text-green-700">{order.status}</span> :
                 <span className="text-red-700">{order.status}</span>} </td>
                 <td className="px-6 py-4 text-sm text-gray-700">
+                  <Link to={`/admin/view/orders/${order.id}`}>
                 <button type="button" className='me-2 bg-blue-400 text-white p-3 rounded-md '>View</button>
-            
+                </Link>
                </td>
             
             </tr>

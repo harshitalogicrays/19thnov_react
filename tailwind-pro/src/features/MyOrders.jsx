@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchorders, selectorders } from '../redux/orderSlice'
+import { Link } from 'react-router'
 
 const MyOrders = () => {
        const dispatch = useDispatch()
@@ -8,8 +9,9 @@ const MyOrders = () => {
            dispatch(fetchorders())
        },[])
    
-       const orders = useSelector(selectorders)
-   
+       const allorders = useSelector(selectorders)
+       const {username} =  JSON.parse(sessionStorage.getItem("19thnov"))
+       const orders =  allorders.filter(order => order.username == username)
   return (
       <div className="max-w-7xl mx-auto mt-4 p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">My Orders</h2>
@@ -48,14 +50,15 @@ const MyOrders = () => {
                     }`} >
                   <td  className="px-6 py-4 text-sm text-gray-700">{order.id}</td>
                   <td className="px-6 py-4 text-sm text-gray-700"> {order.orderDate} at {order.orderTime}  </td>
-                  <td className="px-6 py-4 text-sm text-gray-700"> {order.total}  </td>
+                  <td className="px-6 py-4 text-sm text-gray-700"> &#8377;{order.total}  </td>
                   <td className="px-6 py-4 text-sm text-gray-700">{order.paymentMethod} </td>
                   <td className="px-6 py-4 text-sm text-gray-700">
                     {order.status=="delivered" ? <span className="text-green-700">{order.status}</span> :
                     <span className="text-red-700">{order.status}</span>} </td>
                     <td className="px-6 py-4 text-sm text-gray-700">
+                      <Link to={`/myorders/${order.id}`}>
                     <button type="button" className='me-2 bg-blue-400 text-white p-3 rounded-md '>View</button>
-                
+                    </Link>
                    </td>
                 
                 </tr>
