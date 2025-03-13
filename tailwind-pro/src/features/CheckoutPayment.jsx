@@ -36,7 +36,7 @@ const CheckoutPayment = () => {
 
   const payonline = async()=>{
     try{
-      const res = await axios.post("http://localhost:1000/create-payment-intent",{amount:total})
+      const res = await axios.post(`${import.meta.env.VITE_NODE_URL}/create-payment-intent`,{amount:total})
       setClientSecret(res.data.clientSecret)
     }
     catch(err){toast.error(err.message)}
