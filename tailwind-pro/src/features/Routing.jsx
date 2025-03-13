@@ -22,6 +22,7 @@ import MyOrders from './MyOrders'
 import MyOrderDetails from './MyOrderDetails'
 import Orders from './Admin/Orders'
 import OrderDetails from './Admin/OrderDetails'
+import ProductDetails from './ProductDetails'
 
 const Routing = () => {
   return (
@@ -30,7 +31,8 @@ const Routing = () => {
             <Route element={<Header/>}>
                 <Route index element={<Home/>}/>
                 <Route path="about" element={<About/>}/>
-                <Route path="products" element={<Products/>}/>        
+                <Route path="products" element={<Products/>}/>  
+                <Route path="product/details/:id" element={<ProductDetails/>}/>        
                 <Route path="cart" element={<Cart/>}/>    
                 <Route path="checkout" element={<Protected> <Checkout/></Protected>}/>       
                 <Route path="checkoutpayment" element={<Protected> <CheckoutPayment/></Protected>}/>              
