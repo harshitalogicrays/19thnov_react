@@ -1,34 +1,77 @@
+// import { createSlice } from "@reduxjs/toolkit";
+
+// const filterSlice = createSlice({
+// name:"filter",
+// initialState:{filterProducts:[] , searchval:'',catval:''},
+// reducers:{
+//     FILTER_BY_SEARCH(state,action){
+//         let {products,search} = action.payload
+//         if(search !=''){
+//             const filter = products.filter(item=>item.title.toLowerCase().includes(search.toLowerCase()))
+//             state.filterProducts = filter
+//         }
+//         state.searchval = search
+//     },
+//     FILTER_BY_CATEGORY(state,action){
+//         let {products,category} = action.payload
+//         if(category !=''){
+//             const filter = products.filter(item=>item.category == category)
+//             state.filterProducts = filter
+//         }
+//         state.catval = category
+//     }
+// }
+
+// })
+
+// export const {FILTER_BY_SEARCH,FILTER_BY_CATEGORY} = filterSlice.actions
+// export default filterSlice
+// export const selectFilters = state=>state.filter.filterProducts
+
+// export const selectSearch = state=>state.filter.searchval
+
+// export const selectCategory = state=>state.filter.catval
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const filterSlice = createSlice({
-name:"filter",
-initialState:{filterProducts:[] , searchval:'',catval:''},
-reducers:{
-    FILTER_BY_SEARCH(state,action){
-        // console.log(action.payload)
-        let {products,search} = action.payload
-        if(search !=''){
-            const filter = products.filter(item=>item.title.toLowerCase().includes(search.toLowerCase()))
-            state.filterProducts = filter
-        }
-        state.searchval = search
-    },
-    FILTER_BY_CATEGORY(state,action){
-        let {products,category} = action.payload
-        if(category !=''){
-            const filter = products.filter(item=>item.category == category)
-            state.filterProducts = filter
-        }
-        state.catval = category
+  name: "filter",
+  initialState: {
+    filterProducts: [],  searchval: "", catval: "",
+    selectedBrands: [],   priceRange: [0, 10000] },
+  reducers: {
+    APPLY_FILTERS(state, action) {
+      let { products, search, category, brands, priceRange } = action.payload;
+      let filteredProducts = products;
+
+      if (search) {
+        filteredProducts = filteredProducts.filter(item =>
+          item.title.toLowerCase().includes(search.toLowerCase())
+        )}
+
+      if (category.length > 0) {
+        filteredProducts = filteredProducts.filter(item => category.includes(item.category));  }
+
+      if (brands.length > 0) {
+        filteredProducts = filteredProducts.filter(item => brands.includes(item.brand));   }
+
+      if (priceRange) {
+        filteredProducts = filteredProducts.filter(
+          item => item.price >= priceRange[0] && item.price <= priceRange[1])}
+
+      state.filterProducts = filteredProducts;
+      state.searchval = search;
+      state.catval = category;
+      state.selectedBrands = brands;
+      state.priceRange = priceRange;
     }
-}
+  }
+});
 
-})
-
-export const {FILTER_BY_SEARCH,FILTER_BY_CATEGORY} = filterSlice.actions
-export default filterSlice
-export const selectFilters = state=>state.filter.filterProducts
-
-export const selectSearch = state=>state.filter.searchval
-
-export const selectCategory = state=>state.filter.catval
+export const { APPLY_FILTERS } = filterSlice.actions;
+export default filterSlice;
+export const selectFilters = state => state.filter.filterProducts;
+export const selectSearch = state => state.filter.searchval;
+export const selectCategories = state => state.filter.catval;
+export const selectBrands = state => state.filter.selectedBrands;
+export const selectPriceRange = state => state.filter.priceRange;

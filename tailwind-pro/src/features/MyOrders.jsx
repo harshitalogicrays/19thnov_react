@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchorders, selectorders } from '../redux/orderSlice'
 import { Link } from 'react-router'
 
 const MyOrders = () => {
        const dispatch = useDispatch()
+
        useEffect(()=>{
            dispatch(fetchorders())
        },[])
@@ -12,6 +13,8 @@ const MyOrders = () => {
        const allorders = useSelector(selectorders)
        const {username} =  JSON.parse(sessionStorage.getItem("19thnov"))
        const orders =  allorders.filter(order => order.username == username)
+
+    
   return (
       <div className="max-w-7xl mx-auto mt-4 p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">My Orders</h2>
@@ -40,7 +43,7 @@ const MyOrders = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.length==0 &&   <tr>  <td colSpan="5"
+              {orders.length==0 &&   <tr>  <td colSpan="7"
                     className="px-6 py-4 text-center text-sm text-gray-500"  >
                     No Order added. </td> </tr>}
             

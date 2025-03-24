@@ -6,8 +6,8 @@ import { toast } from 'react-toastify'
 import { useCart } from '../CartContext'
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
 import useFetchApiData from '../useFetchApiData'
-import { useDispatch } from 'react-redux'
-import { FILTER_BY_SEARCH } from '../redux/filterSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { APPLY_FILTERS } from '../redux/filterSlice'
 
 const Header = () => {
   const {cartItems} =useCart()
@@ -37,12 +37,30 @@ const Header = () => {
 
     //search 
     const dispatch = useDispatch()
-    let {data} = useFetchApiData("https://fakestoreapi.com/products")
+    let {data} = useFetchApiData("https://67b69e6007ba6e5908412007.mockapi.io/products")
     console.log(data)
     let [search,setSearch] = useState('')
-    useEffect(()=>{
-      dispatch(FILTER_BY_SEARCH({products:data , search:search}))
-    },[search])
+    // useEffect(()=>{
+    //   dispatch(FILTER_BY_SEARCH({products:data , search:search}))
+    // },[search])
+     // Local state for search input
+
+
+  // Get existing filter values from Redux
+  const { catval, selectedBrands, priceRange } = useSelector((state) => state.filter);
+
+  // Apply filters whenever search, category, brands, or price range change
+  useEffect(() => {
+    dispatch(
+      APPLY_FILTERS({
+        products: data,
+        search: search, // Search input
+        category: catval, // Selected category
+        brands: selectedBrands, // Selected brands (multiple)
+        priceRange: priceRange, // Price range
+      })
+    );
+  }, [search, catval, selectedBrands, priceRange, data, dispatch]);
     
   return (
     <>

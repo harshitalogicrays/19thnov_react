@@ -14,8 +14,7 @@ const Register = () => {
       //     headers:{'content-type':'application/json'},
       //     body:JSON.stringify(user)
       //   })
-      await axios.post("https://67b69e6007ba6e5908412007.mockapi.io/users",user)
-      
+      await axios.post("https://67b69e6007ba6e5908412007.mockapi.io/users",user)      
         toast.success("registered successfully")
         redirect('/login')
    }

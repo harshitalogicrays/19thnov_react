@@ -25,6 +25,15 @@ const CheckoutPayment = () => {
       status:"placed" , orderDate:new Date().toLocaleDateString() , orderTime:new Date().toLocaleTimeString() }
       try{
         await axios.post("https://67ce5dd3125cd5af757a41a2.mockapi.io/orders" , orderobj)
+
+        await Promise.all(
+          cartItems.map(async (item) => {
+            await axios.put(`${import.meta.env.VITE_NODE_URL}/products/${item.id}`, {
+              stock: item.stock - item.qty,  // Reduce stock by the quantity ordered
+            });
+          })
+        )
+        
         toast.success("order placed")
         emptyCart()
         navigate('/thankyou')

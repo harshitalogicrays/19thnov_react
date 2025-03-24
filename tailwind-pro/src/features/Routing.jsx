@@ -23,6 +23,8 @@ import MyOrderDetails from './MyOrderDetails'
 import Orders from './Admin/Orders'
 import OrderDetails from './Admin/OrderDetails'
 import ProductDetails from './ProductDetails'
+import ForgotPassword from './ForgotPassword'
+import ResetPassword from './ResetPassword'
 
 const Routing = () => {
   return (
@@ -42,6 +44,8 @@ const Routing = () => {
             </Route>
             <Route path="register" element={<Register/>}/>
             <Route path="login" element={<Login/>}/>
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
 
             <Route path='admin' element={<ProtectedAdmin><AdminLayout/></ProtectedAdmin>}>
                <Route index element={<Dashboard/>}/>

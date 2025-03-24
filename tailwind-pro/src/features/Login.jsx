@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useLocation, useNavigate } from 'react-router'
+import { Link, Links, useLocation, useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
 
 const Login = () => {
@@ -57,7 +57,7 @@ const Login = () => {
               {errors.email && <span className="text-red-500">{errors.email.message}</span>}
             </div>
 
-            <div>
+            {/* <div>
               <div>
                 <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
                   Password
@@ -75,6 +75,31 @@ const Login = () => {
               </div>
               {errors.password && <span className="text-red-500">{errors.password.message}</span>}
 
+            </div> */}
+
+<div>
+              <div className="flex items-center justify-between">
+                <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
+                  Password
+                </label>
+                <div className="text-sm">
+                  <Link to="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                    Forgot password?
+                  </Link>
+                </div>
+              </div>
+              <div className="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  autoComplete="current-password"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  {...register('password',{required:"password is required"})} onBlur={()=>trigger('password')}/>
+                  </div>
+                  {errors.password && <span className="text-red-500">{errors.password.message}</span>}
+    
             </div>
 
             <div>

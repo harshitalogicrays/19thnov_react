@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectProducts } from '../redux/productSlice'
 import { useParams } from 'react-router'
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import { useCart } from '../CartContext';
+import ReactStars from 'react-stars';
 
 const ProductDetails = () => {
     const products =  useSelector(selectProducts)
@@ -14,6 +15,20 @@ const ProductDetails = () => {
     const {cartItems,decrease, increase , ADD_TO_CART} = useCart()
     const itemIndex =  cartItems.findIndex(item=>item.id==id)
     const item =  cartItems.find(item=>item.id==id)
+
+    const [reviews, setReviews] = useState([]);
+    useEffect(() => {
+      if (product) {
+        fetch(`https://67ce5dd3125cd5af757a41a2.mockapi.io/reviews?productId=${product.id}`)
+          .then(res => res.json())
+          .then(data => setReviews(data))
+          .catch(err => console.error("Error fetching reviews:", err));
+      }
+    }, [product]);
+    const aggregateRating =
+    reviews.length > 0
+      ? (reviews.reduce((acc, cur) => acc + Number(cur.rating), 0) / reviews.length).toFixed(1)
+      : 0;
   return (
     <>
 
@@ -46,10 +61,49 @@ const ProductDetails = () => {
                         onClick={()=>increase(item)}>+</button>
                 </>
                 }
-               
+            {/* Display Reviews Section */}
+        <div className="mt-8">
+          <h3 className="text-2xl font-semibold mb-4">Reviews</h3>
+          {reviews.length > 1 && (
+            <div className="mb-4">
+              <p className="text-lg font-medium">
+                Aggregate Rating: <span className="text-blue-600">{aggregateRating} / 5</span> from {reviews.length} reviews.
+              </p>
+              <ReactStars 
+                value={Number(aggregateRating)} 
+                count={5} 
+                size={20} 
+                edit={false} 
+              />
             </div>
-     
-  </div>
+          )}
+          {reviews.length === 0 ? (
+            <p className="text-gray-600">No reviews yet.</p>
+          ) : (
+            reviews.map(review => (
+              <div key={review.id} className="border p-4 mb-4 rounded">
+                <div className="flex items-center mb-2">
+                  <ReactStars 
+                    value={review.rating} 
+                    count={5} 
+                    size={16} 
+                    edit={false} 
+                  />
+                  <span className="ml-2 text-gray-600">{review.rating} / 5</span>
+                </div>
+                <p className="text-gray-800"><strong>User:</strong> {review.username}</p>
+                <p className="text-gray-800">{review.comment}</p>
+                {review.date && (
+                  <p className="text-sm text-gray-500 mt-1">
+                    {new Date(review.date).toLocaleDateString()}
+                  </p>
+                )}
+              </div>
+            ))
+          )}
+          </div>
+      </div>
+    </div>
     </>
 
   )
