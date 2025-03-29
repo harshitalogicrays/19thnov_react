@@ -33,6 +33,7 @@ const Products = () => {
         priceRange: price
       })
     );
+    
   }, [products, searchval, selectedCategories, selectedBrand, price]);
 
   const handleCategory = category => {
@@ -146,7 +147,7 @@ const Products = () => {
   <input
     type="number"
     min="0"
-    max="100000"
+    max="10000"
     value={price[0]}
     onChange={(e) => handlePriceChange(e, "min")}
     className="w-20 p-1 border rounded"

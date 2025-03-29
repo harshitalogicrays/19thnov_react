@@ -27,12 +27,17 @@ const StripePayment = ({clientSecret}) => {
                 if(result.paymentIntent){
                     if(result.paymentIntent.status=="succeeded"){
                         toast.success("payment done")
+                        const discountedPrice = sessionStorage.getItem("discountedPrice");
+                        const appliedCoupon = sessionStorage.getItem("appliedCoupon");
+
                         let orderobj = {cartItems ,  total,  username,  email ,  userId:id , shippingAddress ,  paymentMethod:"online" ,
-                            status:"placed" , orderDate:new Date().toLocaleDateString() , orderTime:new Date().toLocaleTimeString() }
+                            status:"placed" , orderDate:new Date().toLocaleDateString() , orderTime:new Date().toLocaleTimeString() , discountedPrice , appliedCoupon }
                             try{
                               await axios.post("https://67ce5dd3125cd5af757a41a2.mockapi.io/orders" , orderobj)
                               toast.success("order placed")
                               emptyCart()
+                              sessionStorage.removeItem("discountedPrice");
+                              sessionStorage.removeItem("appliedCoupon");
                               navigate('/thankyou')
                             }
                             catch(err){

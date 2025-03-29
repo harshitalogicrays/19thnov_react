@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
 import { selectShipping, storeShippingAddress } from '../redux/checkoutSlice'
+import CouponCode from './CouponCode'
+import { useCart } from '../CartContext'
 
 const Checkout = () => {
   const dispatch = useDispatch()
@@ -26,6 +28,10 @@ const Checkout = () => {
       if(checkoutAddress){setShippingAddress({...checkoutAddress})}
       else setShippingAddress({...obj})
   },[checkoutAddress])
+  
+  const {total} = useCart()
+  const [price,setPrice] = useState(total)
+  const [coupon, setCoupon] = useState(""); 
   return (
     <div className='flex max-w-7xl gap-12 mt-8 mx-auto bg-white shadow-lg rounded-lg p-6'>
 <div className='flex-1 border p-3'>
@@ -106,6 +112,7 @@ const Checkout = () => {
            </form>
         </div>
     <div className='flex-1'>
+      <CouponCode total={total}/>
       <CheckoutSummary/>
     </div>
     </div>

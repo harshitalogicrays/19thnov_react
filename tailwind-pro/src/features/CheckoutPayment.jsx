@@ -20,22 +20,28 @@ const CheckoutPayment = () => {
   const {cartItems,total} = useCart()
   const {username,email,id} =  JSON.parse(sessionStorage.getItem("19thnov"))
   const shippingAddress =  useSelector(selectShipping)
+
   const handleCodOrder = async()=>{
+    const discountedPrice = sessionStorage.getItem("discountedPrice");
+    const appliedCoupon = sessionStorage.getItem("appliedCoupon");
     let orderobj = {cartItems ,  total,  username,  email ,  userId:id , shippingAddress ,  paymentMethod:"cod" ,
-      status:"placed" , orderDate:new Date().toLocaleDateString() , orderTime:new Date().toLocaleTimeString() }
+      status:"placed" , orderDate:new Date().toLocaleDateString() , orderTime:new Date().toLocaleTimeString(),
+      discountedPrice ,appliedCoupon }
       try{
         await axios.post("https://67ce5dd3125cd5af757a41a2.mockapi.io/orders" , orderobj)
 
         await Promise.all(
           cartItems.map(async (item) => {
-            await axios.put(`${import.meta.env.VITE_NODE_URL}/products/${item.id}`, {
-              stock: item.stock - item.qty,  // Reduce stock by the quantity ordered
+            await axios.put(`https://67b69e6007ba6e5908412007.mockapi.io/products/${item.id}`, {
+              stock: item.stock - item.qty,  
             });
           })
         )
         
         toast.success("order placed")
         emptyCart()
+        sessionStorage.removeItem("discountedPrice");
+        sessionStorage.removeItem("appliedCoupon");
         navigate('/thankyou')
       }
       catch(err){

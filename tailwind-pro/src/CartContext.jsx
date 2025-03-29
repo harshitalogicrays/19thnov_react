@@ -41,7 +41,7 @@ const CartContext = ({children}) => {
      setTotal(t)
     }
     return (
-    <cartcon.Provider value={{cartItems,total,ADD_TO_CART,increase,decrease,removeFromCart,emptyCart,calculateTotal}}>
+    <cartcon.Provider value={{cartItems,total,ADD_TO_CART,increase,decrease,removeFromCart,emptyCart,calculateTotal }}>
       {children}
     </cartcon.Provider>
   )
